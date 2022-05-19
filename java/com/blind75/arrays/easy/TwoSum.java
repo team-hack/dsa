@@ -1,12 +1,14 @@
 package com.blind75.arrays.easy;
 
+import com.blind75.helper.Task;
+
 import java.util.HashMap;
 
-public class TwoSum {
+public class TwoSum extends Task {
 
     /**
-     * O(m+n) time complexity - every for loop add time complexity.
-     * O(2n) which is basically O(n) since its linear than quadratic
+     * O(n^2) time complexity - every for loop add time complexity.
+     *
      * @param nums
      * @param target
      * @return
@@ -15,7 +17,7 @@ public class TwoSum {
         for (int i = 0; i < nums.length; i++) {
             for (int j = i + 1; j < nums.length; j++) {
                 if (nums[i] + nums[j] == target) {
-                    return new int[]{i,j};
+                    return new int[]{i, j};
                 }
             }
         }
@@ -24,7 +26,8 @@ public class TwoSum {
 
     /**
      * O(n) complexity in time and space
-     * a tad faster.
+     * and faster.
+     *
      * @param nums
      * @param target
      * @return
@@ -38,5 +41,17 @@ public class TwoSum {
             map.put(target - nums[i], i);
         }
         return new int[0];
+    }
+
+    public static void main(String[] args) {
+        new TwoSum().run();
+    }
+
+    @Override
+    protected void run() {
+        int[] nums = {2, 7, 12, 23};
+        int target = 9;
+        printArray(bruteForce(nums, target), "bruteforce");
+        printArray(twoSum(nums, target), "optimized");
     }
 }
