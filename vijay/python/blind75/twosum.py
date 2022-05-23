@@ -19,9 +19,7 @@ def bruteForce(nums:List[int], target:int) -> List[int]:
 def optimized(nums:List[int], target:int) -> List[int]:
     lookup = {}
     for i in range(len(nums)):
-        print(lookup.get(target - nums[i]))
         if lookup.get(target - nums[i]) is not None: 
-            print('true')
             return [lookup.get(target - nums[i]), i]
         lookup[nums[i]] = i
 
